@@ -38,8 +38,8 @@ public class SortNumbersController {
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseBody
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
-    public String handleException(Exception e) {
-        return e.getMessage();
+    public ErrorMessage handleException(Exception e) {
+        return new ErrorMessage("Unable to process the provided input.");
     }
 
     private int[] extractNumbersFromCSV(String csvNumbersList) {
