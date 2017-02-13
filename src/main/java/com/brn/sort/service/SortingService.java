@@ -21,11 +21,8 @@ public class SortingService {
     private Sorter sorter;
 
     @Resource
-    private final SortResultRepository repository;
+    private SortResultRepository repository;
 
-    public SortingService(SortResultRepository repository) {
-        this.repository = repository;
-    }
 
     @Transactional
     public SortResult sortNumbers(int[] inputNumbers) {

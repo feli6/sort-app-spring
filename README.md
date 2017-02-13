@@ -13,7 +13,7 @@ To test the sort-app, run the following commands.
 
 * To run the server run.
 
-        java -jar target/sort-app-spring-0.0.1.jar
+        java -jar target/sort-app-spring-0.0.1-SNAPSHOT.jar
 
 
 * It accepts list of numbers to be sorted in CSV format e.g "10,2,3,90,40"
@@ -25,14 +25,10 @@ To test the sort-app, run the following commands.
     or 
     curl -X GET http://localhost:8080/sortNumbers
     
-* Dropwizard provides nice metrics on
-     http://localhost:8081  
-
 # Configuring Application
 You can add or change configurations in application.properties file in the src/main/resources directory.
 
 # TODO
-*  UI for providing numbers to sort and displaying all the previous result.
 *  More test coverage
 *  Pagination support
 *  Validations
