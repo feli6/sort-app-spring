@@ -4,6 +4,10 @@ public class ErrorMessage {
 
     private String message;
 
+    public ErrorMessage() {
+        //empty
+    }
+
     public ErrorMessage(String message) {
         this.message = message;
     }

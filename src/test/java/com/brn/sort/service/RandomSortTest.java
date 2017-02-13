@@ -8,28 +8,31 @@ public class RandomSortTest {
 
     @Test
     public void shouldSortNumbersInAscendingOrder() {
+        sortAndAssertResult(new int[]{5, 4, 3, 2, 1}, new int[]{1, 2, 3, 4, 5});
+        sortAndAssertResult(new int[]{2, 3, 6, 19, 15}, new int[]{2, 3, 6, 15, 19});
+        sortAndAssertResult(new int[]{1}, new int[]{1});
+        sortAndAssertResult(new int[]{1,2,3}, new int[]{1,2,3});
+        sortAndAssertResult(new int[]{1,1,2,2,3}, new int[]{1,1,2,2,3});
+    }
+
+    private void sortAndAssertResult(int[] numberToSort, int[] expectedResult){
         RandomSort sorter = new RandomSort();
-        Sorter.SorterResult result = sorter.sort(new int[]{5, 4, 3, 2, 1});
+        Sorter.SorterResult result = sorter.sort(numberToSort);
         assertThat(result.getSortedNumbers()).isNotNull();
-        assertThat(result.getSortedNumbers()).containsExactly(1, 2, 3, 4, 5);
+        assertThat(result.getSortedNumbers()).containsExactly(expectedResult);
         assertThat(result.getSortingDuration()).isGreaterThan(0);
     }
 
-    @Test
-    public void shouldSortNumbersInAscendingOrder2() {
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowExceptionWhenNullArg() {
         RandomSort sorter = new RandomSort();
-        Sorter.SorterResult result = sorter.sort(new int[]{2, 3, 6, 19, 15});
-        assertThat(result.getSortedNumbers()).isNotNull();
-        assertThat(result.getSortedNumbers()).containsExactly(2, 3, 6, 15, 19);
-
-        result = sorter.sort(new int[]{5, 2, 3, 6, 12, 7, 14, 9, 10, 11});
-        assertThat(result.getSortedNumbers()).isNotNull();
+        sorter.sort(null);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void shouldThrowExceptionWhenBabArg() {
+    public void shouldThrowExceptionWhenEmptyArg() {
         RandomSort sorter = new RandomSort();
-        Sorter.SorterResult result = sorter.sort(null);
+        sorter.sort(new int[]{});
     }
 
 }

@@ -1,6 +1,7 @@
 package com.brn.sort;
 
 import com.brn.sort.domain.SortResult;
+import com.brn.sort.web.ErrorMessage;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,9 +49,17 @@ public class SortAppAcceptanceTest {
     }
 
     @Test
-    public void shouldReturnErrorCodeWhenBadInput() {
-        ResponseEntity<SortResult> responseEntity = restTemplate.postForEntity(URL, "", SortResult.class);
+    public void shouldReturnErrorCodeWhenEmptyInput() {
+        ResponseEntity<ErrorMessage> responseEntity = restTemplate.postForEntity(URL, "", ErrorMessage.class);
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+        assertThat(responseEntity.getBody()).isNotNull();
+    }
+
+    @Test
+    public void shouldReturnErrorCodeWhenBadInput() {
+        ResponseEntity<ErrorMessage> responseEntity = restTemplate.postForEntity(URL, "afsdfsd", ErrorMessage.class);
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+        assertThat(responseEntity.getBody()).isNotNull();
     }
 
     @Test
