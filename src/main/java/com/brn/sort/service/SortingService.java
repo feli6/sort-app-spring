@@ -3,6 +3,7 @@ package com.brn.sort.service;
 
 import com.brn.sort.domain.SortResult;
 import com.brn.sort.domain.SortResultRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,7 +17,8 @@ import static java.util.Arrays.copyOf;
 @Service
 public class SortingService {
 
-    private final Sorter sorter = new QuickSort();
+    @Autowired
+    private Sorter sorter;
 
     @Resource
     private final SortResultRepository repository;

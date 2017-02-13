@@ -1,5 +1,5 @@
 angular.module('sortApp', [])
-    .controller('SortNumbersController', function($scope, $http) {
+    .controller('SortNumbersController', function ($scope, $http) {
         var self = this;
         $scope.submit = submit;
         $scope.sortNumbers = sortNumbers;
@@ -22,19 +22,19 @@ angular.module('sortApp', [])
                     function (response) {
                         console.log('Numbers sorted successfully');
                         $scope.successMessage = 'Numbers sorted successfully';
-                        $scope.errorMessage='';
-                        $scope.sortResult=response.data;
+                        $scope.errorMessage = '';
+                        $scope.sortResult = response.data;
                         getAllSortResults();
                     },
                     function (errResponse) {
                         console.error('Error while sorting numbers');
                         $scope.errorMessage = 'Error while sorting numbers: ' + errResponse.data.message;
-                        $scope.successMessage='';
+                        $scope.successMessage = '';
                     }
                 );
         }
 
-        function getAllSortResults(){
+        function getAllSortResults() {
             $http.get('/sortNumbers')
                 .then(
                     function (response) {
@@ -47,4 +47,6 @@ angular.module('sortApp', [])
                     }
                 );
         }
+
+        getAllSortResults();
     });
