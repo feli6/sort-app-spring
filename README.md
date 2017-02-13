@@ -17,6 +17,7 @@ To test the sort-app, run the following commands.
 
 
 * It accepts list of numbers to be sorted in CSV format e.g "10,2,3,90,40"
+   
    To access the web UI, go to http://localhost:8080
 
    To post data into the application.
