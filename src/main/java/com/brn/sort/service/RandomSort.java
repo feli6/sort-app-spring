@@ -24,7 +24,7 @@ public class RandomSort implements Sorter {
 
     public int randomSort(int[] input) {
         int numberOfSwaps = 0;
-        while(!isSorted(input)) {
+        while (!isSorted(input)) {
             swap(input);
             numberOfSwaps++;
         }
@@ -32,9 +32,9 @@ public class RandomSort implements Sorter {
     }
 
     private void swap(int[] input) {
-        for(int x = 0; x < input.length; ++x) {
-            int i = (int) (Math.random() * input.length),
-                    j = (int) (Math.random() * input.length);
+        for (int x = 0; x < input.length; ++x) {
+            int i = (int) (Math.random() * input.length);
+            int j = (int) (Math.random() * input.length);
             int a = input[i];
             input[i] = input[j];
             input[j] = a;
@@ -42,8 +42,8 @@ public class RandomSort implements Sorter {
     }
 
     private boolean isSorted(int[] i) {
-        for(int x = 0; x < i.length - 1; ++x) {
-            if(i[x] > i[x+1]) {
+        for (int x = 0; x < i.length - 1; ++x) {
+            if (i[x] > i[x + 1]) {
                 return false;
             }
         }
